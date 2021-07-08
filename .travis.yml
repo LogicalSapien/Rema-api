@@ -1,13 +1,8 @@
 # For Travis CI Configuration
 language: java
-install: skip
-
-os: linux
-dist: trusty
-jdk: oraclejdk11
 
 before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew build --scan -s
+  - ./gradlew clean build
