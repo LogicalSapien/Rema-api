@@ -1,9 +1,15 @@
 # For Travis CI Configuration
 language: java
 
+addons:
+  sonarcloud:
+    organization: logicalsapien
+    token: $SONAR_TOKEN
+
 before_install:
   - chmod +x gradlew
 
 script:
+  - "./gradlew checkstyleMain checkstyleTest"
   - "./gradlew clean build jacocoTestReport"
-  - "bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r build/reports/jacoco/test/jacocoTestReport.xml"
+  - "./gradlew sonarqube"
