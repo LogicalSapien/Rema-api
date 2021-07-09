@@ -10,6 +10,7 @@ class RemaApplicationTests {
 
   @Test
   void contextLoads() {
+    RemaApplication.main(new String[] {});
     assertThat(true).isTrue();
   }
 
