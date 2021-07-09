@@ -5,8 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 class HealthControllerTest {
 
@@ -16,13 +14,14 @@ class HealthControllerTest {
     this.healthController = new HealthController();
   }
 
+  /**
+   * Return okay response on calling health api.
+   */
   @Test
   void returnOkayResponseOnCallingHealthApi() {
-    Map<String, Object> healthTestExpectedResponse = new HashMap<>();
-    healthTestExpectedResponse.put("healthy", true);
-    ResponseEntity healthApiResponse = healthController.getHealth();
-    assertThat(healthApiResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-    assertThat(healthApiResponse.getBody()).isEqualTo(healthTestExpectedResponse);
+    final Map<String, Object> healthTestExpdResponse = new HashMap<>();
+    healthTestExpdResponse.put("healthy", true);
+    assertThat(healthController.getHealth().getBody()).isEqualTo(healthTestExpdResponse);
   }
 
 }

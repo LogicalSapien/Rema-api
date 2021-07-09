@@ -11,7 +11,7 @@ public class HealthController {
 
   @GetMapping("api/health")
   public ResponseEntity<Map<String, Object>> getHealth() {
-    Map<String, Object> healthResponse = new HashMap<>();
+    final Map<String, Object> healthResponse = new HashMap<>();
     healthResponse.put("healthy", true);
     return ResponseEntity.ok(healthResponse);
   }
