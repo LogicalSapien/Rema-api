@@ -70,8 +70,8 @@ sonarqube {
 		property "sonar.exclusions", "src/java/test/**"
 		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/main.xml"
 		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/test.xml"
-		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/main.xml"
-		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/test.xml"
+		property "sonar.java.pmd.reportPaths", "${buildDir}/reports/spotbugs/main.xml"
+		property "sonar.java.pmd.reportPaths", "${buildDir}/reports/spotbugs/test.xml"
 		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/pmd/main.xml"
 		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/pmd/test.xml"
 	}
