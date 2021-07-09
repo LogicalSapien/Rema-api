@@ -1,8 +1,13 @@
 plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "org.sonarqube" version "3.3"
 	id 'java'
+	id "jacoco"
 }
+
+// For applying checkstyle configuration
+apply plugin: 'checkstyle'
 
 group = 'com.logicalsapien.rema'
 version = '0.0.1-SNAPSHOT'
@@ -19,4 +24,39 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	// for verbose logging in CI/Cd pipeline
+	testLogging {
+		events "passed", "skipped", "failed"
+		exceptionFormat "full"
+	}
+}
+
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true
+		csv.enabled false
+	}
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, excludes: ['**/com/logicalsapien/rema/RemaApplication**'])
+		}))
+	}
+}
+
+//For configuring checkstyle
+checkstyle {
+	toolVersion '8.44'
+	configFile file("config/checkstyle/checkstyle.xml")
+}
+
+//For configuring sonarqube
+sonarqube {
+	properties {
+		property "sonar.projectKey", "LogicalSapien_Rema-api"
+		property "sonar.coverage.jacoco.xmlRe	portPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+		property "sonar.coverage.exclusions", "src/main/java/com/logicalsapien/rema/rema.java"
+		property "sonar.exclusions", "src/java/test/**"
+	}
 }

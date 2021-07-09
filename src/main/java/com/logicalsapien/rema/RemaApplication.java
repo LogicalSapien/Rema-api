@@ -8,6 +8,7 @@ public class RemaApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(RemaApplication.class, args);
+    System.out.println("Codacy");
   }
 
 }
