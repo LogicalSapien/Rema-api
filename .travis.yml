@@ -5,4 +5,5 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew clean build
+  - "./gradlew clean build jacocoTestReport"
+  - "bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r reports/jacoco/test/jacocoTestReport.xml"

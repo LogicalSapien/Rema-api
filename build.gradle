@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "jacoco"
 }
 
 group = 'com.logicalsapien.rema'
@@ -19,4 +20,25 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	// for verbose logging in CI/Cd pipeline
+	testLogging {
+		events "passed", "skipped", "failed"
+		exceptionFormat "full"
+	}
 }
+
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true
+		csv.enabled false
+	}
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, excludes: ['**/com/logicalsapien/rema/RemaApplication**'])
+		}))
+	}
+}
+
+jar.enabled = true
