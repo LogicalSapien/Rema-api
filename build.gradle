@@ -38,11 +38,6 @@ jacocoTestReport {
 		html.enabled true
 		csv.enabled false
 	}
-	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: it, excludes: ['**/com/logicalsapien/rema/RemaApplication**'])
-		}))
-	}
 }
 
 //For configuring checkstyle
@@ -56,7 +51,6 @@ sonarqube {
 	properties {
 		property "sonar.projectKey", "LogicalSapien_Rema-api"
 		property "sonar.coverage.jacoco.xmlRe	portPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
-		property "sonar.coverage.exclusions", "src/main/java/com/logicalsapien/rema/rema.java"
 		property "sonar.exclusions", "src/java/test/**"
 	}
 }
