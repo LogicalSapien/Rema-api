@@ -10,6 +10,6 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - "./gradlew checkstyleMain checkstyleTest"
+  - "./gradlew checkstyleMain checkstyleTest pmdMain pmdTest spotbugsMain spotbugsTest"
   - "./gradlew clean build jacocoTestReport"
   - "./gradlew sonarqube"

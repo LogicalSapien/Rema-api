@@ -69,10 +69,7 @@ sonarqube {
 		property "sonar.coverage.jacoco.xmlRe	portPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
 		property "sonar.exclusions", "src/java/test/**"
 		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/main.xml, ${buildDir}/reports/checkstyle/test.xml"
-//		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/test.xml"
-//		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/main.xml"
-//		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/test.xml"
-//		property "sonar.java.pmd.reportPaths", "${buildDir}/reports/pmd/main.xml"
-//		property "sonar.java.pmd.reportPaths", "${buildDir}/reports/pmd/test.xml"
+		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/main.xml, ${buildDir}/reports/spotbugs/test.xml"
+		property "sonar.java.pmd.reportPaths", "${buildDir}/reports/pmd/main.xml ${buildDir}/reports/pmd/test.xml"
 	}
 }
