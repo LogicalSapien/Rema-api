@@ -4,13 +4,16 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class HealthControllerTest {
 
-  private HealthController healthController;
+  HealthController healthController;
 
-  public HealthControllerTest() {
+  @BeforeEach
+  public void setUp() {
     this.healthController = new HealthController();
   }
 
@@ -19,9 +22,7 @@ class HealthControllerTest {
    */
   @Test
   void returnOkayResponseOnCallingHealthApi() {
-    final Map<String, Object> healthTestExpdResponse = new HashMap<>();
-    healthTestExpdResponse.put("healthy", true);
-    assertThat(healthController.getHealth().getBody()).isEqualTo(healthTestExpdResponse);
+    assertThat(new HealthController().getHealth().getBody()).isEqualTo(new HashMap<>(Map.of("healthy", true)));
   }
 
 }

@@ -11,7 +11,7 @@ class RemaApplicationTests {
   @Test
   void contextLoads() {
     RemaApplication.main(new String[] {});
-    assertThat(true).isTrue();
+    assertThat(true).isTrue(); // NOPMD - To cover context load
   }
 
 }
