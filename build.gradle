@@ -68,7 +68,7 @@ sonarqube {
 		property "sonar.projectKey", "LogicalSapien_Rema-api"
 		property "sonar.coverage.jacoco.xmlRe	portPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
 		property "sonar.exclusions", "src/java/test/**"
-		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/main.xml"
+		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/main.xml, ${buildDir}/reports/checkstyle/test.xml"
 //		property "sonar.java.checkstyle.reportPaths", "${buildDir}/reports/checkstyle/test.xml"
 //		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/main.xml"
 //		property "sonar.java.spotbugs.reportPaths", "${buildDir}/reports/spotbugs/test.xml"
