@@ -62,6 +62,14 @@ pmd {
 	pmdTest.enabled=true
 }
 
+spotbugsMain {
+	ignoreFailures = true
+}
+
+spotbugsTest  {
+	ignoreFailures = true
+}
+
 //For configuring sonarqube
 sonarqube {
 	properties {
