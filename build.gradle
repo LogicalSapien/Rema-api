@@ -10,6 +10,7 @@ plugins {
 // For applying checkstyle configuration
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
+apply plugin: 'java'
 
 group = 'com.logicalsapien.rema'
 version = '0.0.1-SNAPSHOT'
