@@ -21,3 +21,7 @@ script:
 
 after_success:
   - docker --version
+  - docker build -t rema-api .
+  - docker tag rema-api:latest logicalsapien/rema-api:latest
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push logicalsapien/rema-api:tagname
