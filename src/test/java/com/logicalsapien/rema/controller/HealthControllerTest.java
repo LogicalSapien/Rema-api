@@ -4,25 +4,25 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 class HealthControllerTest {
 
   private HealthController healthController;
 
-  public HealthControllerTest() {
+  @BeforeEach
+  public void setUp() {
     this.healthController = new HealthController();
   }
 
+  /**
+   * Return okay response on calling health api.
+   */
   @Test
   void returnOkayResponseOnCallingHealthApi() {
-    Map<String, Object> healthTestExpectedResponse = new HashMap<>();
-    healthTestExpectedResponse.put("healthy", true);
-    ResponseEntity healthApiResponse = healthController.getHealth();
-    assertThat(healthApiResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-    assertThat(healthApiResponse.getBody()).isEqualTo(healthTestExpectedResponse);
+    assertThat(healthController.getHealth().getBody())
+            .isEqualTo(new HashMap<>(Map.of("healthy", true)));
   }
 
 }
