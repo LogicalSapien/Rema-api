@@ -30,4 +30,4 @@ deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
   app: rema-api
-  on: main
+  on: dev
