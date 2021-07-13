@@ -25,3 +25,8 @@ after_success:
   - docker tag rema-api:latest logicalsapien/rema-api:latest
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push logicalsapien/rema-api:latest
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: rema-api
